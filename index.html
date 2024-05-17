@@ -2,10 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cola de Banco</title>
+    <title>Torres de Hanói</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/brands.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/solid.css">
+
+    <script src="script.js"></script>
 </head>
-<body>
-    
+<body id="body">
+    <header>
+        <div>Torres de Hanói</div>
+    </header>
+    <main>
+        <section class="screen menu" id="screen">      
+            <div class="OP OPSELECT" id="OPM0">Iniciar</div>
+            <div class="OP" id="OPM1">Número de Discos <CR><</CR> 3 <CR>></CR></div>
+            <label for="playerName">Nombre del Jugador:</label>
+            <input type="text" id="playerName" name="playerName" required>
+        </section>
+        <section class="scoreboard" id="scoreboard" style="display: flex;">
+            <h2>Tabla de Puntajes</h2>
+            <div class="scores">
+                <div class="timeScores">
+                    <h3>Por Tiempo</h3>
+                    <table id="timeTable">
+                        <thead>
+                            <tr>
+                                <th>Jugador</th>
+                                <th>Tiempo</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="moveScores">
+                    <h3>Por Movimientos</h3>
+                    <table id="movesTable">
+                        <thead>
+                            <tr>
+                                <th>Jugador</th>
+                                <th>Movimientos</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section class="board" id="board">
+            <div class="infoL" >
+                <button class="EnterResetButtons" style="color:#ca0000;" id="infoL" onclick="MessageInfo();"><i class="fa-solid fa-circle-info"></i></button>
+            </div>
+            <div style="display: none;">
+                <div class="ContEnterResetButtons" >
+                    <button class="EnterResetButtons" id="BEnter" onclick="PressButton('BEnter');"><i class="fa-regular fa-square-caret-right"></i></button>
+                </div>
+                <div class="ContButtons" >
+                    <button class="button" id="BLeft" onclick="PressButton('BLeft');"><i class="fa-solid fa-left-long"></i></button>
+                </div>
+                <div class="ContButtons">
+                    <button class="button" id="BUp" onclick="PressButton('BUp');"><i class="fa-solid fa-up-long"></i></button>
+                    <button class="button" id="BDown" onclick="PressButton('BDown');"><i class="fa-solid fa-down-long"></i></button>
+                </div>
+                <div class="ContButtons" >
+                    <button class="button" id="BRight" onclick="PressButton('BRight');"><i class="fa-solid fa-right-long"></i></button>
+                </div>
+                <div class="ContEnterResetButtons" >
+                    <button class="EnterResetButtons" id="BReset" onclick="PressButton('BReset');"><i class="fa-solid fa-rotate-right"></i></button>
+                </div>
+            </div>
+          
+        </section>
+    </main>
+    <footer></footer>
 </body>
 </html>
