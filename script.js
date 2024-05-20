@@ -26,10 +26,6 @@ function PressButton(id){
         }, 150);
         PressKey(button.id);
     }
-    
-
-    
-
 }
 
 let timeS = 0;
@@ -39,7 +35,17 @@ let movimientos = 0; // Variable global para contar los movimientos
 let playerName = ""; // Variable global para almacenar el nombre del jugador
 document.addEventListener('keydown', logKey);
 function logKey(e){
-    console.log(e.code);
+    switch (e.code) {
+        case "ArrowUp":
+        case "ArrowDown":
+        case "ArrowLeft":
+        case "ArrowRight":
+        case "Enter":
+        case "Escape":
+            e.preventDefault();
+            break;
+    }
+
     let button;
     switch (e.code){
         case "ArrowUp":
@@ -61,7 +67,7 @@ function logKey(e){
         case "Enter" || "NumpadEnter":
             button = document.getElementById("BEnter");
             if(posMenuOP==0){
-                ConstructGame();
+            ConstructGame();
             }
             break;
         case "Escape":
@@ -70,26 +76,27 @@ function logKey(e){
             break;
     }
     
-    if(button.id == "BEnter" || button.id == "BReset"){
-        button.style.color = "#b01010";
-        button.style.borderBottom = "0.6vh solid transparent";
-        button.style.borderTop = "0.6vh solid transparent";
-        setTimeout(function(){
-            button.style.color = "#390606";
-            button.style.borderBottom = "0.6vh solid #171717";
-            button.style.borderTop = "0.6vh solid #313131";
-        }, 150);
-    }else{
-        button.style.color = "#b01010";
-        button.style.borderBottom = "1vh solid transparent";
-        button.style.borderTop = "1vh solid transparent";
-        setTimeout(function(){
-            button.style.color = "#390606";
-            button.style.borderBottom = "1vh solid #171717";
-            button.style.borderTop = "1vh solid #313131";
-        }, 150);
-    }
-    
+    if (button) {
+        if(button.id == "BEnter" || button.id == "BReset"){
+            button.style.color = "#b01010";
+            button.style.borderBottom = "0.6vh solid transparent";
+            button.style.borderTop = "0.6vh solid transparent";
+            setTimeout(function(){
+                button.style.color = "#390606";
+                button.style.borderBottom = "0.6vh solid #171717";
+                button.style.borderTop = "0.6vh solid #313131";
+            }, 150);
+        }else{
+            button.style.color = "#b01010";
+            button.style.borderBottom = "1vh solid transparent";
+            button.style.borderTop = "1vh solid transparent";
+            setTimeout(function(){
+                button.style.color = "#390606";
+                button.style.borderBottom = "1vh solid #171717";
+                button.style.borderTop = "1vh solid #313131";
+            }, 150);
+        }
+    }  
 
 }
 
@@ -277,9 +284,6 @@ function ConstructGame(){
                 column3+
             '</div>'+
         '</div>';
-    
-
-
     screen.innerHTML= stringHTML;
 
 }
@@ -426,8 +430,6 @@ function ENDGAME(){
         "<br><br>"+
         "Movimientos: <div style='color:green'>"+movimientos.toString()+"</div>" + // Muestra el número de movimientos
         "<br><br>"+
-        "Reiniciar? <br><br>"+
-        "Enter: Reiniciar <br>"+
         "Escape: volver al menú <br>";
         let timeTableBody = document.getElementById("timeTable").getElementsByTagName("tbody")[0];
         let movesTableBody = document.getElementById("movesTable").getElementsByTagName("tbody")[0];
@@ -456,8 +458,14 @@ function Reset(){
     let screen = document.getElementById("screen");
     screen.className = "screen menu";
     screen.innerHTML= 
-        "<div class='OP OPSELECT' id='OPM0'>Iniciar</div>"+
-        "<div class='OP' id='OPM1'>Número de Discos <CR><</CR> 3 <CR>></CR></div>";
+    "<div class='infoL' >"+
+    "<button class='EnterResetButtons' style='color:#39ca00;' id='infoL' onclick='MessageInfo();'><i class='fa-solid fa-circle-info'></i></button>"+
+    " Instrucciones del juego"+
+    "</div>"+
+    "<div class='OP OPSELECT' id='OPM0'>Iniciar</div>"+
+    "<div class='OP' id='OPM1'>Número de Discos <CR><</CR> 3 <CR>></CR></div>"+
+    "<label for='playerName'>Nombre del Jugador:</label>"+
+    "<input type='text' id='playerName' name='playerName' required>";
 }
 
 var tiempoTot = 0;
@@ -485,8 +493,6 @@ function formatearMS(tiempo_ms){
 
     return `${display_horas}:${display_minutes}:${display_seconds}.${MS}`;
 }
-
-
 function MessageInfo(){
 
     text =  
@@ -495,10 +501,9 @@ function MessageInfo(){
     "Puede elegir jugar con un rango de entre 3 y 6 discos.<br>"+
     "<br>"+
     "Tendrá un cronometro para conocer el tiempo que ha tardado en resolver el juego.<br>"+
-    "Tendrá un contador de movimientos para conocer la cantidad de movimientos que ha realizado para resolverl el juego.<br>"+
+    "Tendrá un contador de movimientos para conocer la cantidad de movimientos que ha realizado para resolver el juego.<br>"+
     "<br>"+
     "Podrá reiniciar el juego con el botón <i style='color:#ca0000;' class='fa-solid fa-rotate-right'></i> (o Escape del teclado).<br>"+
-    "Para iniciar el juego solo presione <i style='color:#ca0000;' class='fa-regular fa-square-caret-right'></i> (o Enter del teclado).<br>"+
     "<br>"+
     "Para moverse a la izquierda presione <i style='color:#ca0000;' class='fa-solid fa-left-long'></i> (o ← del teclado).<br>"+
     "Para moverse a la derecha presione <i style='color:#ca0000;' class='fa-solid fa-right-long'></i> (o → del teclado).<br>"+
@@ -535,13 +540,7 @@ function MessageInfo(){
     document.getElementById("body").insertAdjacentHTML("beforeend", block) ;
     document.getElementById("body").style.overflow = "hidden";
     document.getElementById("displayblack").insertAdjacentHTML("beforeend", plantilla) ;
-
-
-
 }
-
-
-
 function DeleteHTML(ObjId){
     document.getElementById(ObjId).remove();
     if (!!document.getElementById("displayblack")){

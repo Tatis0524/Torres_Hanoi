@@ -17,13 +17,17 @@
         <div>Torres de Hanói</div>
     </header>
     <main>
-        <section class="screen menu" id="screen">      
+        <section class="screen menu" id="screen">                
+            <div class="infoL" >
+                <button class="EnterResetButtons" style="color:#39ca00;" id="infoL" onclick="MessageInfo();"><i class="fa-solid fa-circle-info"></i></button>
+                Instrucciones del juego
+            </div>
             <div class="OP OPSELECT" id="OPM0">Iniciar</div>
             <div class="OP" id="OPM1">Número de Discos <CR><</CR> 3 <CR>></CR></div>
             <label for="playerName">Nombre del Jugador:</label>
             <input type="text" id="playerName" name="playerName" required>
         </section>
-        <section class="scoreboard" id="scoreboard" style="display: flex;">
+        <section class="scoreboard" id="scoreboard" style="display: flex;">        
             <h2>Tabla de Puntajes</h2>
             <div class="scores">
                 <div class="timeScores">
@@ -52,14 +56,11 @@
                 </div>
             </div>
         </section>
-        <section class="board" id="board">
-            <div class="infoL" >
-                <button class="EnterResetButtons" style="color:#ca0000;" id="infoL" onclick="MessageInfo();"><i class="fa-solid fa-circle-info"></i></button>
-            </div>
-            <div style="display: none;">
+        <section class="board" id="board">           
+            <div style="display: none;">  
                 <div class="ContEnterResetButtons" >
                     <button class="EnterResetButtons" id="BEnter" onclick="PressButton('BEnter');"><i class="fa-regular fa-square-caret-right"></i></button>
-                </div>
+                </div>          
                 <div class="ContButtons" >
                     <button class="button" id="BLeft" onclick="PressButton('BLeft');"><i class="fa-solid fa-left-long"></i></button>
                 </div>
