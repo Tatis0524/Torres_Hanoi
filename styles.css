@@ -8,6 +8,8 @@
 body{
     background: #262626;
     margin: 0px;
+    overflow: hidden; /* Evita el desplazamiento de la página */
+    height: 100vh; /* Asegúrate de que el cuerpo ocupe toda la altura de la ventana */
 }
 header{
     background: #171717;
